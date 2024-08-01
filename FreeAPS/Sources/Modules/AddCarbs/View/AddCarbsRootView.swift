@@ -115,9 +115,8 @@ extension AddCarbs {
                     if state.carbs > 0, !state.disableHypoTreatment {
                         Toggle("Hypo Treatment", isOn: $state.hypoTreatment)
                     }
-                }
 
-                Section {
+                    // Button
                     Button {
                         button.toggle()
                         if button { state.add(override, fetch: editMode) }
@@ -129,13 +128,9 @@ extension AddCarbs {
                         ) }
                         .disabled(empty)
                         .frame(maxWidth: .infinity, alignment: .center)
+                        .listRowBackground(!empty ? Color(.systemBlue) : Color(.systemGray4))
+                        .tint(.white)
                 }
-                footer: {
-                    state.hypoTreatment ? Text("Skipping Bolus View because of hypo")
-                        .frame(maxWidth: .infinity, alignment: .center) : nil
-                }
-                .listRowBackground(!empty ? Color(.systemBlue) : Color(.systemGray4))
-                .tint(.white)
 
                 Section {
                     mealPresets
